@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>vatsal Augmented Demo v1.2</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, minimum-scale=1.0,initial-scale=1, maximum-scale=1.0"
+    />
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.6.0/dist/aframe-look-at-component.min.js"></script>
+    <script src="gesture-detector.js"></script>
+    <script src="gesture-handler.js"></script>
+    <script src="Common.js"></script>
+    <script src="sceneClick.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css?x=2">
+    
+  </head>
+
+  <body>
+    <a-scene
+      arjs
+      embedded
+      renderer="logarithmicDepthBuffer: true;"
+      vr-mode-ui="enabled: false"
+      gesture-detector
+      id="scene"
+      cursor="rayOrigin: mouse"
+    >
+      <a-Assets timeout="5000">
+        <video
+        preload="auto" 
+          id="video"
+         src="./Assets/2.mp4"
+        ></video>
+        <a-asset-item
+          id="bowser1"
+          src="./Assets/A2.glb"
+        >
+        </a-asset-item>
+        <a-asset-item
+          id="bowser"
+          src="./Assets/A2.glb"
+        >
+        </a-asset-item>
+        <img
+          id="logo"
+          src="./Assets/one.png"
+        /> 
+          <img
+          id="cursorPng"
+          src="./Assets/cursor.png"
+      /> 
+      </a-Assets>
+
+      <a-camera id="camera">
+        <a-marker
+          type="pattern"
+          url="./Assets/A2.patt"
+          id="markerA"
+        ></a-marker>
+        <a-entity light="type:ambient; intensity:2"></a-entity>
+        <a-entity
+          light="type:directional;castShadow:true"
+          position="0 1 0"
+        ></a-entity>
+         <a-entity
+          
+          cursor="fuse: true; fuseTimeout: 0"
+          position="0 0 -1"
+          geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.025"
+          material="color: white; shader: flat;opacity:0"   visible="false"      
+        ></a-entity>
+        <a-entity
+          position="0 0 -5"
+          scale="0.05 0.05 0.05"
+          gesture-handler
+          id="vatlook"
+        >
+          <a-entity id="bowser-model1" gltf-model="#bowser1" visible="false">
+            <a-image
+              class="clickable"
+              foo1
+              vText="Hello I am Part1"
+              position="9 0 0"
+              look-at="#vatlook"
+              src="#logo"
+              width="3"
+              height="3"
+            ></a-image>
+            <a-image
+              class="clickable"
+              foo
+              vText="Hydra is a genus of small, fresh-water organisms of the phylum Cnidaria and class Hydrozoa. They are native to the temperate and tropical regions. Biologists are especially interested in Hydra because of their regenerative ability – they do not appear to die of old age, or to age at all."
+              position="2 20 0"
+              look-at="#vatlook"
+              src="#logo"
+              width="3"
+              height="3"
+            ></a-image>
+          </a-entity>
+          <a-entity id="bowser-model2" gltf-model="#bowser" visible="false">
+          </a-entity>
+
+          <a-video
+             
+            opacity="0.8"
+            visible="false"
+            src="#video"
+            width="16"
+            height="9"
+            scale="2.5 2.5 2.5"
+            rotation="0 45 0"
+            position="1 0 0"
+          ></a-video>
+        </a-entity>
+
+   <a-image id="vat-cursor"
+               position="0.01 -0.02 -0.99"             
+              src="#cursorPng"
+              width="0.03"
+              height="0.03"
+            ></a-image>
+
+
+
+
+        
+      </a-camera>
+    </a-scene>
+    <!--         <div id="overlay"> -->
+    <div class="menu">
+      <p>Section #1</p>
+      <p>Section #2</p>
+      <p>Section #3</p>
+    </div>
+    <div class="menu__toggler"><span></span></div>
+    <div id="vat-Content" class="hide">
+       <img width="20px"          
+          src="./Assets/close.svg"
+        />
+     <div></div>
+    </div>
+    <div id="vat-Control" class="hide">
+     
+      <div id='controls'>
+			<progress id='progress-bar' min='0' max='100' value='0'>0% played</progress>
+			<button id='btnReplay' class='replay' title='replay' accesskey="R" onclick='replayVideo();'>Replay</button>	
+			<button id='btnPlayPause' class='play' title='play' accesskey="P" onclick='playPauseVideo();'>Play</button>
+			<button id='btnStop' class='stop' title='stop' accesskey="X" onclick='stopVideo();'>Stop</button>
+      <input type="range" id="volume-bar" title="volume" min="0" max="1" step="0.1" value="1">
+			<button id='btnMute' class='mute' title='mute' onclick='muteVolume();'>Mute</button>	
+			<span id='Vidclose'>x</span>	
+            
+		</div>
+      <p>
+        
+      </p>
+    </div>
+    <div id="loadingDiv">
+      
+      
+        <img width="50px"          
+          src="./Assets/loading.svg"
+        />
+ 
+      
+      
+    </div>
+    
+    
+    <!--   </div> -->
+  </body>
+  <script src="DomClick.js"></script>
+  
+  
+</html>
