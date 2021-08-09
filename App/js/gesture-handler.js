@@ -9,11 +9,7 @@ AFRAME.registerComponent("gesture-handler", {
   },
 
   init: function () {
-    
-        // this.el.object3D.position.x = ((1/30)*window.innerWidth)-13;
-        // this.el.object3D.position.x = 1;
-        // this.el.object3D.position.y= -0.5;
-        // this.el.object3D.position.z= 5;
+   
     this.handleScale = this.handleScale.bind(this);
     this.handleRotation = this.handleRotation.bind(this);
 
@@ -24,9 +20,8 @@ AFRAME.registerComponent("gesture-handler", {
     this.el.sceneEl.addEventListener("markerFound", (e) => {
       this.isVisible = true;
       
-        VidClose();
   document.querySelector("#bowser-model1").object3D.visible = true;
-  document.querySelector("#bowser-model2").object3D.visible = false;
+
     });
 
     this.el.sceneEl.addEventListener("markerLost", (e) => {
