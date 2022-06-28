@@ -242,25 +242,17 @@ AFRAME.registerComponent("vat-model",{
  init: function () {
    //three js loader code + attaching it to the entity's object3D
   var loader = new THREE.GLTFLoader();
-		loader.parse( data, '', ( gltf ) => {
-		
-			gltf.scene.traverse( ( child ) => {
-			
-				if ( child.isMesh ) {
-				
-					child.geometry.center();
-				
-				}
-			
-			} );
-		
+
+		loader.parse( data, '', ( gltf ) => {		
+			gltf.scene.traverse( ( child ) => {			
+				if ( child.isMesh ) {				
+					child.geometry.center();				
+				}			
+			} );		
 			this.el.object3D.add( gltf.scene );		
-		
 		} );
-  
-  
-  
-   }
+     }
+
 });
 
 
