@@ -1,0 +1,47 @@
+<head>
+	<title>Augmented reality Code Dump By Vatsal Patel</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+	<link rel="stylesheet" type="text/css" href="./style/style.css">
+	<link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body style="overflow: auto;">
+  <div class="linkkit" onclick="openInNewTab('./Page/TouchGestureOnModel.html');">  
+  <b>1. Touch Gesture On Model<br>Scan Below marker Image,..<br></b>
+   <img style="width:200px" src="https://cdn.glitch.com/26fe8b08-0b65-4eae-9cb6-063baef89004%2Fscan.png?v=1628570159727"/>
+  </div>
+  <div class="linkkit" onclick="openInNewTab('./Page/StringToObj.html');">  
+  <b>2. String To Obj<br><br></b>   
+    <textarea class="txt">AFRAME.registerComponent("vat-model",{
+ init: function () {
+   //three js loader code + attaching it to the entity's object3D
+  var loader = new THREE.GLTFLoader();
+		loader.parse( data, '', ( gltf ) => {		
+			gltf.scene.traverse( ( child ) => {			
+				if ( child.isMesh ) {				
+					child.geometry.center();				
+				}			
+			} );		
+			this.el.object3D.add( gltf.scene );		
+		} );
+     }
+});</textarea><br>
+    <li>
+      data == json object == GLTF
+    </li>
+    <li>
+      vat-model ==<textarea><a-entity id="bowser-model1" vat-model visible="true"></textarea> 
+    </li>
+    
+  </div>
+  <div class="linkkit" onclick="openInNewTab('./Page/AnimatedGltf.html');">  
+  <b>3. Animated Gltf<br><br></b>   
+  </div>
+  
+  
+  <script>
+  function openInNewTab(url) {
+ window.open(url, '_blank').focus();
+}
+  </script>
+        <script src="../main.js"></script>  
+	</body>
