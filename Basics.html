@@ -170,12 +170,17 @@ let Node_world = e =&gt; {
             el.components["raycaster"].data.enabled = isStart
         }
     })
-}</textarea></div><br>
+}</textarea><lable class="Title deleat count" vat-id="14">ID : 14 &amp; Title : reflection problem with shadow stripes on model</lable><textarea class="txt deleat" vat-id="14">  // shadow glitch done,....
+        model.object3D.traverse((child) =&gt; {
+            if (!child.isMesh) return;
+            child.material.shadowSide = VATS.BackSide;
+            child.material.needsUpdate = true;
+        })</textarea></div><br>
 	<br>
 	<textarea class="sub subover" id="code0" placeholder="ID"></textarea> 
 	<textarea class="sub subover" id="code1" placeholder="Title"></textarea> <br>
 	<textarea class="sub subover" id="code2" placeholder="code"></textarea><br>
 	<a href="javascript:runner()" id="btn">Submit</a> <a href="javascript:deleat()" id="btn">Delete</a> <a href="javascript:down()" id="btn">Download</a> 
-	<textarea class="sub subover subover1" id="code3">Number of ID : 13</textarea> 
+	<textarea class="sub subover subover1" id="code3">Number of ID : 14</textarea> 
 	<br>
 	<script type="text/javascript" src="main.js"></script></body>
