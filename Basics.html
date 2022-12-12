@@ -42,12 +42,50 @@ so change path as per your assets location,...
    vr-mode-ui="enabled: false"
    networked-scene="room: dev; debug: true; adapter: socketio;"&gt;
     ...
-&lt;/a-scene&gt;</textarea><lable class="Title deleat count" vat-id="6">ID : 6 &amp; Title : Disabled Default Camera rotation and Wasd keyboard controls</lable><textarea class="txt deleat" vat-id="6"> &lt;a-camera look-controls-enabled="false" wasd-controls-enabled="false"&gt;&lt;/a-camera&gt;</textarea></div><br>
+&lt;/a-scene&gt;</textarea><lable class="Title deleat count" vat-id="6">ID : 6 &amp; Title : Disabled Default Camera rotation and Wasd keyboard controls</lable><textarea class="txt deleat" vat-id="6"> &lt;a-camera look-controls-enabled="false" wasd-controls-enabled="false"&gt;&lt;/a-camera&gt;</textarea><lable class="Title deleat count" vat-id="7">ID : 7 &amp; Title : center And ScaleModel resize, Origin reset</lable><textarea class="txt deleat" vat-id="7">function centerAndScaleModel(modelEl) {
+    var box;
+    var size;
+    var center;
+    var scale;
+    // var modelEl = model_iso;
+
+    var gltfObject = modelEl.getObject3D('mesh');
+
+    // Reset position and scales.
+    modelEl.object3D.position.set(0, 0, 0);
+    modelEl.object3D.scale.set(1.0, 1.0, 1.0);
+    // this.cameraRigEl.object3D.position.z = 3.0;
+
+    // Calculate model size.
+    modelEl.object3D.updateMatrixWorld();
+    box = new VATS.Box3().setFromObject(gltfObject);
+    size = box.getSize(new VATS.Vector3());
+
+    // Calculate scale factor to resize model to human scale.
+    scale = 1.6 / size.y;
+    scale = 2.0 / size.x &lt; scale ? 2.0 / size.x : scale;
+    scale = 2.0 / size.z &lt; scale ? 2.0 / size.z : scale;
+
+    modelEl.object3D.scale.set(scale, scale, scale);
+
+    // Center model at (0, 0, 0).
+    modelEl.object3D.updateMatrixWorld();
+    box = new VATS.Box3().setFromObject(gltfObject);
+    center = box.getCenter(new VATS.Vector3());
+    size = box.getSize(new VATS.Vector3());
+
+
+
+    modelEl.object3D.position.x = -center.x;
+    modelEl.object3D.position.y = -center.y;
+    modelEl.object3D.position.z = -center.z;
+
+}</textarea></div><br>
 	<br>
 	<textarea class="sub subover" id="code0" placeholder="ID"></textarea> 
 	<textarea class="sub subover" id="code1" placeholder="Title"></textarea> <br>
 	<textarea class="sub subover" id="code2" placeholder="code"></textarea><br>
 	<a href="javascript:runner()" id="btn">Submit</a> <a href="javascript:deleat()" id="btn">Delete</a> <a href="javascript:down()" id="btn">Download</a> 
-	<textarea class="sub subover subover1" id="code3">Number of ID : 6</textarea> 
+	<textarea class="sub subover subover1" id="code3">Number of ID : 7</textarea> 
 	<br>
 	<script type="text/javascript" src="main.js"></script></body>

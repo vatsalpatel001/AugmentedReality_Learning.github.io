@@ -1,16 +1,18 @@
 <head>
-	<title>Augmented reality Code Dump By Vatsal Patel</title>
-	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
-	<link rel="stylesheet" type="text/css" href="./style/style.css">
-	<link rel="stylesheet" type="text/css" href="../style.css">
+  <title>Augmented reality Code Dump By Vatsal Patel</title>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+  <link rel="stylesheet" type="text/css" href="./style/style.css">
+  <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
+
 <body style="overflow: auto;">
-  <div class="linkkit" onclick="openInNewTab('./Page/TouchGestureOnModel.html');">  
-  <b>1. Touch Gesture On Model<br>Scan Below marker Image,..<br></b>
-   <img style="width:200px" src="https://cdn.glitch.com/26fe8b08-0b65-4eae-9cb6-063baef89004%2Fscan.png?v=1628570159727"/>
+  <div class="linkkit" onclick="openInNewTab('./Page/TouchGestureOnModel.html');">
+    <b>1. Touch Gesture On Model<br>Scan Below marker Image,..<br></b>
+    <img style="width:200px"
+      src="https://cdn.glitch.com/26fe8b08-0b65-4eae-9cb6-063baef89004%2Fscan.png?v=1628570159727" />
   </div>
-  <div class="linkkit" onclick="openInNewTab('./Page/StringToObj.html');">  
-  <b>2. String To Obj<br><br></b>   
+  <div class="linkkit" onclick="openInNewTab('./Page/StringToObj.html');">
+    <b>2. String To Obj<br><br></b>
     <textarea class="txt">AFRAME.registerComponent("vat-model",{
  init: function () {
    //three js loader code + attaching it to the entity's object3D
@@ -29,22 +31,25 @@
       data == json object == GLTF
     </li>
     <li>
-      vat-model ==<textarea><a-entity id="bowser-model1" vat-model visible="true"></textarea> 
+      vat-model ==<textarea><a-entity id="bowser-model1" vat-model visible="true"></textarea>
     </li>
-    
+
   </div>
-  <div class="linkkit" onclick="openInNewTab('./Page/AnimatedGltf.html');">  
-  <b>3. Animated Gltf<br><br></b>   
-  </div>  
-  <div class="linkkit" onclick="openInNewTab('./Page/Look_At_With_Orbit_control.html');">  
-  <b>4. Look_At_With_Orbit_control <br><br></b>   
+  <div class="linkkit" onclick="openInNewTab('./Page/AnimatedGltf.html');">
+    <b>3. Animated Gltf<br><br></b>
   </div>
-  
-  
+  <div class="linkkit" onclick="openInNewTab('./Page/Look_At_With_Orbit_control.html');">
+    <b>4. Look_At_With_Orbit_control <br><br></b>
+  </div>
+
+  <div class="linkkit" onclick="openInNewTab('./Tasks/gltfLoaderWithDarco/index.html');">
+    <b>5. Gltf loader with Darco compression <br><br></b>
+  </div>
+
   <script>
-  function openInNewTab(url) {
- window.open(url, '_blank').focus();
-}
+    function openInNewTab(url) {
+      window.open(url, '_blank').focus();
+    }
   </script>
-        <script src="../main.js"></script>  
-	</body>
+  <script src="../main.js"></script>
+</body>
