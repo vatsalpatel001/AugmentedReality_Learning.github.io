@@ -126,12 +126,22 @@ so change path as per your assets location,...
       object3D.el.removeObject3D("mesh");
     }
   
-  }</textarea></div><br>
+  }</textarea><lable class="Title deleat count" vat-id="9">ID : 9 &amp; Title : Aframe Threejs remove texture Cache</lable><textarea class="txt deleat" vat-id="9">   &lt;a-scene  id="vat_scene"&gt;&lt;/a-scene&gt;
+const textureCache = vat_scene.systems.material.textureCache;
+
+    for (let key in textureCache) {
+        textureCache[key].then(val =&gt; {
+            // console.log()
+            if (!val.texture) {
+                val.dispose()
+            }
+        })
+    }</textarea></div><br>
 	<br>
 	<textarea class="sub subover" id="code0" placeholder="ID"></textarea> 
 	<textarea class="sub subover" id="code1" placeholder="Title"></textarea> <br>
 	<textarea class="sub subover" id="code2" placeholder="code"></textarea><br>
 	<a href="javascript:runner()" id="btn">Submit</a> <a href="javascript:deleat()" id="btn">Delete</a> <a href="javascript:down()" id="btn">Download</a> 
-	<textarea class="sub subover subover1" id="code3">Number of ID : 8</textarea> 
+	<textarea class="sub subover subover1" id="code3">Number of ID : 9</textarea> 
 	<br>
 	<script type="text/javascript" src="main.js"></script></body>
