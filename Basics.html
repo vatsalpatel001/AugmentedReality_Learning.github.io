@@ -227,12 +227,91 @@ function generateCubeMap() {
     }
     let cm = new VATS.CubeTextureLoader().load(images);
     return cm;
+}</textarea><lable class="Title deleat count" vat-id="16">ID : 16 &amp; Title : Aframe animation-mixer Helpher Functions </lable><textarea class="txt deleat" vat-id="16">VFRAME = {};
+// model object3D
+// All time (in seconds)
+//VFRAME.stopAnimation()
+//VFRAME.startAnimation()
+// VFRAME.playAnimation()
+// VFRAME.mixerTime(3) start animation at 3seconds
+
+// need to convert frame to seconds
+
+VFRAME.startAnimation = function (timeout) {
+  if (timeout) {
+    setTimeout(() =&gt; {
+      model.setAttribute(
+        "animation-mixer",
+        "clip: *; loop: once; clampWhenFinished: true;timeScale:0"
+      );
+    }, timeout * 1000);
+  } else {
+    model.setAttribute(
+      "animation-mixer",
+      "clip: *; loop: once; clampWhenFinished: true;timeScale:0"
+    );
+  }
+}
+
+VFRAME.mixerTime = function (time) {
+  let mixerComponent = model.components["animation-mixer"];
+  let timeScale = model.components["animation-mixer"].data.timeScale;
+  //   // 1  6  6
+  // // 0.5 6 3
+
+  let new_time = time / timeScale;
+  let mixer = mixerComponent.mixer;
+  // mixer.setTime(time);
+  mixer.setTime(new_time);
+}
+VFRAME.playAnimation = function (Speed, timeout) {
+  if (!Speed) {
+    Speed = 1
+  }
+  if (timeout) {
+    setTimeout(() =&gt; {
+      model.setAttribute(
+        "animation-mixer", `timeScale:${Speed}`
+      );
+    }, timeout * 1000);
+  } else {
+    model.setAttribute(
+      "animation-mixer", `timeScale:${Speed}`
+    );
+  }
+
+}
+VFRAME.pauseAnimation = function (timeout) {
+  let mixerComponent = model.components["animation-mixer"];
+  let timeScale = model.components["animation-mixer"].data.timeScale;
+  let new_timeout = (timeout / timeScale);
+  if (timeout) {
+    setTimeout(() =&gt; {
+      model.setAttribute(
+        "animation-mixer", "timeScale:0"
+      );
+    }, new_timeout * 1000);
+    // }, timeout * 1000);
+  } else {
+    model.setAttribute(
+      "animation-mixer", "timeScale:0"
+    );
+  }
+}
+VFRAME.stopAnimation = function (timeout) {
+  if (timeout) {
+    setTimeout(() =&gt; {
+      model.removeAttribute("animation-mixer");
+    }, timeout * 1000);
+  } else {
+    model.removeAttribute("animation-mixer");
+  }
 }</textarea></div><br>
 	<br>
 	<textarea class="sub subover" id="code0" placeholder="ID"></textarea> 
 	<textarea class="sub subover" id="code1" placeholder="Title"></textarea> <br>
 	<textarea class="sub subover" id="code2" placeholder="code"></textarea><br>
 	<a href="javascript:runner()" id="btn">Submit</a> <a href="javascript:deleat()" id="btn">Delete</a> <a href="javascript:down()" id="btn">Download</a> 
-	<textarea class="sub subover subover1" id="code3">Number of ID : 15</textarea> 
+	<textarea class="sub subover subover1" id="code3">Number of ID : 16</textarea> 
 	<br>
 	<script type="text/javascript" src="main.js"></script></body>
