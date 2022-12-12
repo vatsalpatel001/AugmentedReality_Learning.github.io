@@ -430,12 +430,64 @@ VFRAME.ANIME.hideIt = function (node) {
     }, 50);
     node.material.needsUpdate = true;
   }
+}</textarea><lable class="Title deleat count" vat-id="19">ID : 19 &amp; Title : model Child (part) highlighter with glass material</lable><textarea class="txt deleat" vat-id="19">
+function partLocate(model, node_name) { //node_name gltf id of child
+    const texture = new VATS.CanvasTexture(generateTexture());
+    texture.magFilter = VATS.NearestFilter;
+    texture.wrapT = VATS.RepeatWrapping;
+    texture.wrapS = VATS.RepeatWrapping;
+
+    model.object3D.traverse((child) =&gt; {
+        if (!child.isMesh) return;
+
+        // if (child.name == this.data.value || child.name==`${this.data.value}0` || child.name == `${this.data.value}1` || child.name == `${this.data.value}2`) {
+        if (child.name == node_name || child.parent.name == node_name) {
+            if (child.userData) {
+
+                // if (!child.parent.isMesh) return;
+                child.material = child.userData.originalMaterial;
+                child.position.copy(child.userData.originalPosition);
+                child.scale.copy(child.userData.originalScale);
+                child.material.needsUpdate = true;
+            }
+        } else {
+            child.material = new VATS.MeshPhysicalMaterial({
+                color: "#ffffff",
+                transmission: 1,
+                opacity: 0.3,
+                metalness: 1,
+                roughness: 0.4,
+                ior: 1.3,
+                specularIntensity: 1,
+                specularColor: "#ffffff",
+                transparent: true,
+                alphaMap: texture,
+            });
+            //   child.material = new VATS.MeshPhysicalMaterial({
+            //     transparent: true,
+            //     opacity: 0.2,
+            // });
+        }
+    })
+}
+function generateTexture() {
+
+    const canvas = document.createElement('canvas');
+    canvas.width = 2;
+    canvas.height = 2;
+
+    const context = canvas.getContext('2d');
+    context.fillStyle = 'white';
+    context.fillRect(0, 0, 2, 2);
+
+    return canvas;
+
 }</textarea></div><br>
 	<br>
 	<textarea class="sub subover" id="code0" placeholder="ID"></textarea> 
 	<textarea class="sub subover" id="code1" placeholder="Title"></textarea> <br>
 	<textarea class="sub subover" id="code2" placeholder="code"></textarea><br>
 	<a href="javascript:runner()" id="btn">Submit</a> <a href="javascript:deleat()" id="btn">Delete</a> <a href="javascript:down()" id="btn">Download</a> 
-	<textarea class="sub subover subover1" id="code3">Number of ID : 18</textarea> 
+	<textarea class="sub subover subover1" id="code3">Number of ID : 19</textarea> 
 	<br>
 	<script type="text/javascript" src="main.js"></script></body>
