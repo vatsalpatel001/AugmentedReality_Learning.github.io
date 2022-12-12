@@ -175,12 +175,64 @@ let Node_world = e =&gt; {
             if (!child.isMesh) return;
             child.material.shadowSide = VATS.BackSide;
             child.material.needsUpdate = true;
-        })</textarea></div><br>
+        })</textarea><lable class="Title deleat count" vat-id="15">ID : 15 &amp; Title : Add fake environment on model object3D</lable><textarea class="txt deleat" vat-id="15">function Add_envMap_1(gltf) {
+    let _reflection_map = new VATS.TextureLoader().load("./Assets/images/home.jpg");
+    _reflection_map.encoding = VATS.sRGBEncoding;
+    _reflection_map.mapping = VATS.EquirectangularReflectionMapping;
+    gltf.traverse((child) =&gt; {
+        if (child.material) {
+            child.material.envMap = _reflection_map;
+            child.material.envMap.intensity = 5;
+            child.material.needsUpdate = true;
+        }
+    });
+}
+
+
+
+function Add_envMap_2(gltf) {
+    gltf.traverse((child) =&gt; {
+        const textureCube = generateCubeMap();
+        if (child.material) {
+            child.material.envMap = textureCube;
+            child.material.envMap.intensity = 0.5;
+            child.material.needsUpdate = true;
+        }
+    });
+}
+
+
+function generateCubeMap() {
+    let images = [];
+    let c = document.createElement("canvas");
+    c.width = 4;
+    c.height = c.width;
+    let ctx = c.getContext("2d");
+    for (let i = 0; i &lt; 6; i++) {
+        ctx.fillStyle = "#fff";
+        ctx.fillRect(0, 0, c.width, c.height);
+
+        for (let j = 0; j &lt; (c.width * c.height) / 2; j++) {
+            // ctx.fillStyle = Math.random() &lt; 0.5 ? "#d5d5d5" : "#ececec";
+            ctx.fillStyle = "#fff";
+            // ctx.fillStyle ="#ff0000";
+            ctx.fillRect(
+                Math.floor(Math.random() * c.width),
+                Math.floor(Math.random() * c.height),
+                2,
+                1
+            );
+        }
+        images.push(c.toDataURL());
+    }
+    let cm = new VATS.CubeTextureLoader().load(images);
+    return cm;
+}</textarea></div><br>
 	<br>
 	<textarea class="sub subover" id="code0" placeholder="ID"></textarea> 
 	<textarea class="sub subover" id="code1" placeholder="Title"></textarea> <br>
 	<textarea class="sub subover" id="code2" placeholder="code"></textarea><br>
 	<a href="javascript:runner()" id="btn">Submit</a> <a href="javascript:deleat()" id="btn">Delete</a> <a href="javascript:down()" id="btn">Download</a> 
-	<textarea class="sub subover subover1" id="code3">Number of ID : 14</textarea> 
+	<textarea class="sub subover subover1" id="code3">Number of ID : 15</textarea> 
 	<br>
 	<script type="text/javascript" src="main.js"></script></body>
