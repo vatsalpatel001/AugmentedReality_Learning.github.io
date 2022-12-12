@@ -485,12 +485,24 @@ function generateTexture() {
     model.object3D.traverse((node) =&gt; {
         console.log(node.name)
     })
-}</textarea></div><br>
+}</textarea><lable class="Title deleat count" vat-id="21">ID : 21 &amp; Title : Aframe get component or overWrite its functions</lable><textarea class="txt deleat" vat-id="21">var reset_it_btn = AFRAME.components["reset-it"];
+  if (!reset_it_btn) {
+    AFRAME.registerComponent("reset-it", {});
+    reset_it_btn = AFRAME.components["reset-it"];
+  }
+  reset_it_btn.Component.prototype.init = function () {
+    this.onclick = this.onclick.bind(this);
+    this.el.addEventListener('click', this.onclick);
+  }
+  reset_it_btn.Component.prototype.onclick = function () {
+   console.log("Clicked,..")
+  };
+</textarea></div><br>
 	<br>
 	<textarea class="sub subover" id="code0" placeholder="ID"></textarea> 
 	<textarea class="sub subover" id="code1" placeholder="Title"></textarea> <br>
 	<textarea class="sub subover" id="code2" placeholder="code"></textarea><br>
 	<a href="javascript:runner()" id="btn">Submit</a> <a href="javascript:deleat()" id="btn">Delete</a> <a href="javascript:down()" id="btn">Download</a> 
-	<textarea class="sub subover subover1" id="code3">Number of ID : 20</textarea> 
+	<textarea class="sub subover subover1" id="code3">Number of ID : 21</textarea> 
 	<br>
 	<script type="text/javascript" src="main.js"></script></body>
