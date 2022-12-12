@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Model Viewer AR - VR</title>
+    <meta name="description" content="Model Viewer (VR / AR)">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <script src="./Assets/js/Aframe_min.js?x=80"></script>
+    <script src="./Assets/js/Jquary.js"></script>
+    <script src="./Assets/js/app.js"></script>
+    <script src="./Assets/js/aframe-extras.min.js"></script>
+</head>
+
+<body>
+    <a-scene reflection="directionalLight:a-light#dirlight;" id="vat_scene"
+        renderer="colorManagement: true;antialias: true;" gltf-model="dracoDecoderPath: ./Assets/Darco/"
+        model-viewer1="" raycaster="objects:.raycastable" stats1>
+        <a-assets>
+            <a-asset-item timeout="10" id="arrowBtnAssets" src="./Assets/Model/arrow_btn.gltf?x=5"></a-asset-item>
+        </a-assets>
+        <a-entity class="raycastable" id="btnBack" gltf-model="#arrowBtnAssets" scale="" position="0 0 -2.662"
+            rotation="0 0 180">
+        </a-entity>
+        <a-entity class="raycastable" id="myPanel" scale="5 5 5" position="1 0 -2.662"
+         rotation="0 0 180"
+         material="shader:  panelShader;  brightness:  0.5;  borderWidth:  0.01;  ratio:  2;  borderRadius:  0.2;  opacity:  0.9;"
+                geometry="primitive:  plane;  segmentsHeight:  20;  segmentsWidth:  20;  width:  1.2"
+               >
+        </a-entity>
+    </a-scene>
+</body>
+
+</html>
