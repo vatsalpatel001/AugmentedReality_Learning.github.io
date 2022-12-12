@@ -314,12 +314,128 @@ VFRAME.stopAnimation = function (timeout) {
       node.userData.originalPosition = node.position.clone();
       node.userData.originalScale = node.scale.clone();
     })
-  }</textarea></div><br>
+  }</textarea><lable class="Title deleat count" vat-id="18">ID : 18 &amp; Title :  hide show model childs with animations ,using child name arr</lable><textarea class="txt deleat" vat-id="18">VFRAME = {}
+VFRAME.ANIME = {};
+VFRAME.ANIME.ShowNodeAnime = (node_arr) =&gt; {
+  if (!node_arr) {
+    model.object3D.traverse(node =&gt; {
+      VFRAME.ANIME.showIt(node);
+    })
+  } else {
+    for (let i = 0; i &lt; node_arr.length; i++) {
+      let node = model.object3D.getObjectByName(node_arr[i]);
+      VFRAME.ANIME.showIt(node)
+    }
+  }
+}
+
+VFRAME.ANIME.HideNodeAnime = (node_arr) =&gt; {
+  if (!node_arr) {
+    model.object3D.traverse(node =&gt; {
+      VFRAME.ANIME.hideIt(node)
+    })
+  } else {
+    for (let i = 0; i &lt; node_arr.length; i++) {
+      let node = model.object3D.getObjectByName(node_arr[i]);
+      VFRAME.ANIME.hideIt(node)
+    }
+  }
+}
+
+VFRAME.ANIME.IntHideNodeAnime = (node_arr) =&gt; {
+  if (!node_arr) {
+    model.object3D.traverse(node =&gt; {
+      node.material.opacity = 0;
+      node.visible = false;
+      node.material.needsUpdate = true;
+    })
+  } else {
+    for (let i = 0; i &lt; node_arr.length; i++) {
+      let node = model.object3D.getObjectByName(node_arr[i]);
+      node.material.opacity = 0;
+      node.visible = false;
+      node.material.needsUpdate = true;
+    }
+  }
+}
+
+VFRAME.ANIME.HideAllExcpt = (node_arr) =&gt; {
+  model.object3D.traverse(node =&gt; {
+    if (node_arr.indexOf(node.name) &lt; 0) {
+      VFRAME.ANIME.hideIt(node)
+    }
+  })
+}
+
+VFRAME.ANIME.ShowAllExcpt = (node_arr) =&gt; {
+  model.object3D.traverse(node =&gt; {
+    if (node_arr.indexOf(node.name) &lt; 0) {
+      VFRAME.ANIME.showIt(node)
+    }
+  })
+}
+
+VFRAME.ANIME.showIt = function (node) {
+  if (!node) {
+    return
+  }
+
+  if (node.material) {
+    node.visible = true;
+    let transparent = false;
+    let opacity = 1;
+    if (node.userData) {
+      if (node.userData.originalMaterial) {
+        transparent = node.userData.originalMaterial.transparent;
+        opacity = node.userData.originalMaterial.opacity;
+      }
+    }
+
+    node.material.opacity = 0;
+    node.material.transparent = transparent;
+    node.material.needsUpdate = true;
+    let temp_opac = 0;
+
+    let interval = setInterval(() =&gt; {
+      temp_opac += 0.1
+      node.material.opacity = temp_opac;
+      if (temp_opac &gt;= opacity) {
+        node.material.opacity = opacity;
+        node.visible = true;
+        node.material.needsUpdate = true;
+        clearInterval(interval);
+      }
+      node.material.needsUpdate = true;
+    }, 50);
+    node.material.needsUpdate = true;
+  }
+}
+
+VFRAME.ANIME.hideIt = function (node) {
+  if (node.material) {
+    let temp_opac = node.material.opacity || 1;
+    node.material.opacity = 0;
+    node.material.transparent = true;
+    node.material.needsUpdate = true;
+    let interval = setInterval(() =&gt; {
+      temp_opac -= 0.1
+      node.material.opacity = temp_opac;
+      if (temp_opac &lt;= 0) {
+        node.material.opacity = 0;
+        node.visible = false;
+        node.material.needsUpdate = true;
+        clearInterval(interval);
+      }
+      node.material.needsUpdate = true;
+    }, 50);
+    node.material.needsUpdate = true;
+  }
+}</textarea></div><br>
 	<br>
 	<textarea class="sub subover" id="code0" placeholder="ID"></textarea> 
 	<textarea class="sub subover" id="code1" placeholder="Title"></textarea> <br>
 	<textarea class="sub subover" id="code2" placeholder="code"></textarea><br>
 	<a href="javascript:runner()" id="btn">Submit</a> <a href="javascript:deleat()" id="btn">Delete</a> <a href="javascript:down()" id="btn">Download</a> 
-	<textarea class="sub subover subover1" id="code3">Number of ID : 17</textarea> 
+	<textarea class="sub subover subover1" id="code3">Number of ID : 18</textarea> 
 	<br>
 	<script type="text/javascript" src="main.js"></script></body>
